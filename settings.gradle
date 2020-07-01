@@ -1,0 +1,2 @@
+rootProject.name='Imgur Browser2'
+include ':app'
