@@ -20,9 +20,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASE_URL",
-                getProperty("$projectDir/../../../services/imgur.properties", "base_url")
+                getProperty("$projectDir/../../../services/imgur2.properties", "base_url")
         buildConfigField "String", "CLIENT_ID",
-                getProperty("$projectDir/../../../services/imgur.properties", "client_id")
+                getProperty("$projectDir/../../../services/imgur2.properties", "client_id")
 
     }
 
@@ -31,6 +31,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 
 }

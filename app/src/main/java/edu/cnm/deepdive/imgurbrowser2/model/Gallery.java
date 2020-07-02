@@ -2,6 +2,7 @@ package edu.cnm.deepdive.imgurbrowser2.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 
 public class Gallery {
 
@@ -93,5 +94,7 @@ public class Gallery {
       this.data = data;
     }
   }
+
+
 
 }
