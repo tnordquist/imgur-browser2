@@ -82,6 +82,12 @@ public class Gallery {
     this.images = images;
   }
 
+    @Override
+    public String toString() {
+        return title  + description +  Arrays.toString(images);
+    }
+
+
   public static class Search {
 
     private Gallery[] data;
@@ -92,6 +98,12 @@ public class Gallery {
 
     public void setData(Gallery[] data) {
       this.data = data;
+    }
+
+    @Override
+    public String toString() {
+      return "SearchResult{" +
+          "data=" + Arrays.toString(getData());
     }
   }
 

@@ -18,8 +18,8 @@ public class Image {
   private int width;
   private int height;
 
-  @SerializedName("link")
   @Expose
+  @SerializedName("link")
   private String url;
 
   public String getId() {
@@ -82,7 +82,16 @@ public class Image {
     return url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  @Override
+  public String toString() {
+    String alt = "Holder Title";
+    String altDes = "Filler Description Items";
+    if (title == null) {
+      title = alt;
+    }
+    if (description == null) {
+      description = altDes;
+    }
+    return title + "" + description + "" + url;
   }
 }
