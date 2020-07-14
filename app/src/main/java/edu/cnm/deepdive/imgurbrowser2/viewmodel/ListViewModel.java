@@ -17,12 +17,12 @@ import java.util.Objects;
 
 public class ListViewModel extends AndroidViewModel {
 
-  private MutableLiveData<Gallery.Search> searchResult;
+  private final MutableLiveData<Gallery.Search> searchResult;
   //  private MutableLiveData<Gallery[]> galleries;
   private MutableLiveData<Boolean> loadError = new MutableLiveData<Boolean>();
   private MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
-  private MutableLiveData<Throwable> throwable;
-  private CompositeDisposable pending;
+  private final MutableLiveData<Throwable> throwable;
+  private final CompositeDisposable pending;
   ImgurService imgurService;
 
   public ListViewModel(@NonNull Application application) {
@@ -61,7 +61,7 @@ public class ListViewModel extends AndroidViewModel {
             "cute")
             .subscribeOn(Schedulers.io())
             .subscribe(
-                searchResult -> this.searchResult.postValue(searchResult),
+                this.searchResult::postValue,
                 throwable -> this.throwable.postValue(throwable.getCause())
             )
     );

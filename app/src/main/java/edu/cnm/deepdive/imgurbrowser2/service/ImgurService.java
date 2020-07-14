@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.imgurbrowser2.BuildConfig;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
 import io.reactivex.Single;
+import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
@@ -37,6 +38,7 @@ public interface ImgurService {
       interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
       OkHttpClient client = new OkHttpClient.Builder()
           .addInterceptor(interceptor)
+          .readTimeout(30, TimeUnit.SECONDS)
           .build();
       Retrofit retrofit = new Retrofit.Builder()
           .addConverterFactory(GsonConverterFactory.create(gson))
