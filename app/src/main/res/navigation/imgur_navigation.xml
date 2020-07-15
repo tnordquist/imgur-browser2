@@ -3,11 +3,14 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/imgur_navigation"
-  app:startDestination="@id/gallerySearchFragment">
+  app:startDestination="@id/gallerySearchFragment"
+  >
 
   <fragment
     android:id="@+id/gallerySearchFragment"
     android:name="edu.cnm.deepdive.imgurbrowser2.controller.GallerySearchFragment"
     android:label="gallery_list"
-    tools:layout="@layout/gallery_list"/>
+    tools:layout="@layout/gallery_list"
+    />
+
 </navigation>

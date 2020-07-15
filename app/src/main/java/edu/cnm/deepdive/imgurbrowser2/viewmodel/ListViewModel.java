@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.imgurbrowser2.viewmodel;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -10,29 +9,20 @@ import edu.cnm.deepdive.imgurbrowser2.BuildConfig;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
 import edu.cnm.deepdive.imgurbrowser2.service.ImgurService;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import java.util.List;
-import java.util.Objects;
 
 public class ListViewModel extends AndroidViewModel {
 
   private final MutableLiveData<Gallery.Search> searchResult;
-  //  private MutableLiveData<Gallery[]> galleries;
-  private MutableLiveData<Boolean> loadError = new MutableLiveData<Boolean>();
-  private MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
   private final MutableLiveData<Throwable> throwable;
-  private final CompositeDisposable pending;
   ImgurService imgurService;
+  private final CompositeDisposable pending;
 
   public ListViewModel(@NonNull Application application) {
     super(application);
-    imgurService = ImgurService.getInstance();
     searchResult = new MutableLiveData<Gallery.Search>();
-//    galleries = new MutableLiveData<List<Gallery>>();
     throwable = new MutableLiveData<Throwable>();
-    loadError = new MutableLiveData<Boolean>();
-    loading = new MutableLiveData<Boolean>();
+    imgurService = ImgurService.getInstance();
     pending = new CompositeDisposable();
     loadData();
   }
@@ -41,27 +31,17 @@ public class ListViewModel extends AndroidViewModel {
     return searchResult;
   }
 
-  public LiveData<Boolean> getLoading() {
-    return loading;
-  }
-
-  public LiveData<Boolean> getError() {
-    return loadError;
-  }
-
-  public MutableLiveData<Throwable> getThrowable() {
+  public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
-
-  @SuppressLint("CheckResult")
   public void loadData() {
     pending.add(
         imgurService.getSearchResult(BuildConfig.CLIENT_ID,
-            "cute")
+            "Fish AND Sharks")
             .subscribeOn(Schedulers.io())
             .subscribe(
-                this.searchResult::postValue,
+                value -> this.searchResult.postValue(value),
                 throwable -> this.throwable.postValue(throwable.getCause())
             )
     );

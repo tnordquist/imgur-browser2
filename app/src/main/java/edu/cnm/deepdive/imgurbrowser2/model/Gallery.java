@@ -82,17 +82,15 @@ public class Gallery {
     this.images = images;
   }
 
-    @Override
-    public String toString() {
-        return title  + description +  Arrays.toString(images);
-    }
-
+  @Override
+  public String toString() {
+    return title + description + Arrays.toString(images);
+  }
 
   public static class Search {
 
     @Expose
     private Gallery[] data;
-
 
     public Gallery[] getData() {
       return data;
@@ -108,7 +106,5 @@ public class Gallery {
           "data=" + Arrays.toString(getData());
     }
   }
-
-
 
 }

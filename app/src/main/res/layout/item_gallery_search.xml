@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:padding="@dimen/half_margin">
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <!--  private final TextView description;-->
 
   <Spinner
     android:id="@+id/gallery_search_spinner"
@@ -14,7 +14,6 @@
     android:spinnerMode="dialog"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/title"
     />
 
   <TextView
@@ -23,8 +22,12 @@
     android:layout_height="wrap_content"
     app:layout_constraintStart_toEndOf="@id/gallery_search_spinner"
     app:layout_constraintTop_toTopOf="parent"
-    android:text="@string/image_title"
-    android:textColor="@android:color/black"/>
+    android:layout_marginLeft="@dimen/basic_margin"
+    android:layout_marginTop="@dimen/basic_margin"
+    android:text="Image Title"
+    style="@style/TitleText"
+    android:textColor="@android:color/black"
+    />
 
   <TextView
     android:id="@+id/description"
@@ -32,9 +35,9 @@
     android:layout_height="wrap_content"
     app:layout_constraintStart_toEndOf="@id/gallery_search_spinner"
     app:layout_constraintTop_toBottomOf="@id/title"
-    android:text="@string/description"
-    android:textSize="10sp"
-    android:textColor="@android:color/black"
-    android:layout_gravity="start"/>
-
+    android:text="Image Description"
+    style="@style/Descpription"
+    android:layout_marginLeft="@dimen/basic_margin"
+    android:layout_marginTop="@dimen/basic_margin"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
