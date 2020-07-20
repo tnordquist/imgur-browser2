@@ -7,8 +7,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import edu.cnm.deepdive.imgurbrowser2.BuildConfig;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
+import edu.cnm.deepdive.imgurbrowser2.model.Gallery.Search;
 import edu.cnm.deepdive.imgurbrowser2.service.ImgurService;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class ListViewModel extends AndroidViewModel {
@@ -38,10 +40,10 @@ public class ListViewModel extends AndroidViewModel {
   public void loadData() {
     pending.add(
         imgurService.getSearchResult(BuildConfig.CLIENT_ID,
-            "Fish AND Sharks")
+            "cars")
             .subscribeOn(Schedulers.io())
             .subscribe(
-                value -> this.searchResult.postValue(value),
+                value -> ListViewModel.this.searchResult.postValue(value),
                 throwable -> this.throwable.postValue(throwable.getCause())
             )
     );
