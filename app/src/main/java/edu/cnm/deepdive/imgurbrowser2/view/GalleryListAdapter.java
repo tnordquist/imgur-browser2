@@ -13,15 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.imgurbrowser2.R;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
-import edu.cnm.deepdive.imgurbrowser2.model.Image;
+import java.util.List;
 
 public class GalleryListAdapter extends
     RecyclerView.Adapter<GalleryListAdapter.GalleryViewHolder> {
 
   private final Context context;
-  private final Gallery[] galleries;
+  private final List<Gallery> galleries;
 
-  public GalleryListAdapter(Context context, Gallery[] galleries) {
+  public GalleryListAdapter(Context context, List<Gallery> galleries) {
     super();
     this.context = context;
     this.galleries = galleries;
@@ -42,7 +42,7 @@ public class GalleryListAdapter extends
 
   @Override
   public int getItemCount() {
-    return galleries.length;
+    return galleries.size();
   }
 
   class GalleryViewHolder extends RecyclerView.ViewHolder {
@@ -50,6 +50,7 @@ public class GalleryListAdapter extends
     private final TextView title;
     private final TextView description;
     private final Spinner imageSpinner;
+    private Gallery gallery;
 
     public GalleryViewHolder(@NonNull View itemView) {
       super(itemView);
@@ -70,10 +71,11 @@ public class GalleryListAdapter extends
     }
 
     private void bind(int position) {
-      title.setText(galleries[position].getTitle());
-      description.setText(galleries[position].getDescription());
+      gallery = galleries.get(position);
+      title.setText(gallery.getTitle());
+      description.setText(gallery.getDescription());
       GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(context,
-          galleries[position].getImages());
+          gallery.getImages());
       imageSpinner.setAdapter(galleryImageAdapter);
     }
   }

@@ -12,11 +12,12 @@ import androidx.annotation.Nullable;
 import com.squareup.picasso.Picasso;
 import edu.cnm.deepdive.imgurbrowser2.R;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
+import java.util.List;
 
 public class GalleryImageAdapter extends ArrayAdapter<Image> {
 
   public GalleryImageAdapter(@NonNull Context context,
-      Image[] imageItemArray) {
+      List<Image> imageItemArray) {
     super(context, 0, imageItemArray);
   }
 
