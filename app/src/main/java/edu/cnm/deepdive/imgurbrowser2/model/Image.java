@@ -3,10 +3,15 @@ package edu.cnm.deepdive.imgurbrowser2.model;
 import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class Image {
+public class Image implements Serializable {
 
-  private String id;
+  private static final long serialVersionUID = 5552951471272620955L;
+
+  @Expose
+  @SerializedName("id")
+  private String imageId;
 
   @Expose
   private String title;
@@ -14,21 +19,51 @@ public class Image {
   @Expose
   private String description;
 
-  private long datetime;
+  @Expose
+  @SerializedName("datetime")
+  private Long imageDateTime;
+
+  @Expose
   private String type;
-  private int width;
-  private int height;
+
+  @Expose
+  private Integer width;
+
+  @Expose
+  private Integer height;
 
   @Expose
   @SerializedName("link")
   private String url;
 
-  public String getId() {
-    return id;
+  @Expose
+  private Integer views;
+
+  @Expose
+  private Long bandwidth;
+
+  public Integer getViews() {
+    return views;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setViews(Integer views) {
+    this.views = views;
+  }
+
+  public Long getBandwidth() {
+    return bandwidth;
+  }
+
+  public void setBandwidth(Long bandwidth) {
+    this.bandwidth = bandwidth;
+  }
+
+  public String getImageId() {
+    return imageId;
+  }
+
+  public void setImageId(String imageId) {
+    this.imageId = imageId;
   }
 
   public String getTitle() {
@@ -47,12 +82,12 @@ public class Image {
     this.description = description;
   }
 
-  public long getDatetime() {
-    return datetime;
+  public Long getImageDateTime() {
+    return imageDateTime;
   }
 
-  public void setDatetime(long datetime) {
-    this.datetime = datetime;
+  public void setImageDateTime(Long imageDateTime) {
+    this.imageDateTime = imageDateTime;
   }
 
   public String getType() {
@@ -63,19 +98,19 @@ public class Image {
     this.type = type;
   }
 
-  public int getWidth() {
+  public Integer getWidth() {
     return width;
   }
 
-  public void setWidth(int width) {
+  public void setWidth(Integer width) {
     this.width = width;
   }
 
-  public int getHeight() {
+  public Integer getHeight() {
     return height;
   }
 
-  public void setHeight(int height) {
+  public void setHeight(Integer height) {
     this.height = height;
   }
 

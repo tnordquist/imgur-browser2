@@ -59,25 +59,23 @@ public class Gallery {
     this.datetime = datetime;
   }
 
-  public int getImagesCount() {
-    return imagesCount;
-  }
-
-  public void setImagesCount(int imagesCount) {
-    this.imagesCount = imagesCount;
-  }
-
-  public Tag[] getTags() {
-    return tags;
-  }
-
-  public void setTags(Tag[] tags) {
-    this.tags = tags;
-  }
+//  public List<Tag> getTags() {
+//    return tags;
+//  }
+//
+//  public String getLink() {
+//    return link;
+//  }
+//
+//  public void setLink(String link) {
+//    this.link = link;
+//  }
+//
+//  public void setTags(List<Tag> tags) {
+//    this.tags = tags;
+//  }
 
   public List<Image> getImages() {
-    // TODO consider uncommenting below
-//    return (images != null) ? images : new List<Image>[0];
     return images;
   }
 
