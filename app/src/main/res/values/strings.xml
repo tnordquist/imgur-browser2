@@ -3,17 +3,20 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="an_error_occurred_while_loading">An error occurred while loading</string>
-  <string name="image_title">Image Title</string>
   <string name="gallery_image">Gallery Image</string>
-  <string name="description">Description</string>
-  <string name="image_detail_description">Description</string>
-  <string name="image_detail_id">Id</string>
-  <string name="image_detail_url_link">Url Link</string>
-  <string name="image_detail_date_amp_time"><![CDATA[Date & Time]]></string>
+
+  <string name="image_title">Image Title</string>
+  <string name="image_description">Image Description</string>
+  <string name="image_url">Image Url</string>
+  <string name="image_title">Image Title</string>
+  <string name="image_id">Image Id</string>
+  <string name="image_url">Image Url</string>
+  <string name="image_datetime">Image Datetime</string>
+  <string name="gallery_image">Gallery Image</string>
+  <string name="image_detail_description">Image Detail Description</string>
   <string name="image_type">Image Type</string>
-  <string name="detail_image_width">Image Width</string>
-  <string name="detail_image_height">Image Height</string>
-  <string name="detail_image_views">Views</string>
-  <string name="detail_image_bandwidth">Bandwidth</string>
+  <string name="image_width">Image Width</string>
+  <string name="image_height">Image Height</string>
+  <string name="image_views">Image Views</string>
+  <string name="image_bandwidth">Image Bandwidth</string>
 </resources>
