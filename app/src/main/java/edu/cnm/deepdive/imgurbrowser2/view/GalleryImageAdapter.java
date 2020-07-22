@@ -16,8 +16,9 @@ import java.util.List;
 
 public class GalleryImageAdapter extends ArrayAdapter<Image> {
 
-  public GalleryImageAdapter(@NonNull Context context, List<Image> imageItemArray) {
-    super(context, 0, imageItemArray);
+  public GalleryImageAdapter(@NonNull Context context,
+      List<Image> imageList) {
+    super(context, 0, imageList);
   }
 
   @NonNull
@@ -26,37 +27,32 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
     return initView(position, convertView, parent);
   }
 
-  @Nullable
   @Override
-  public View getDropDownView(int position, @Nullable View convertView,
-      @NonNull ViewGroup parent) {
+  public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
     return initView(position, convertView, parent);
   }
 
-  private View initView(int position, View convertview, ViewGroup parent) {
-    if (convertview == null) {
-      convertview = LayoutInflater.from(getContext()).inflate(
+  private View initView(int position, View convertView, ViewGroup parent) {
+
+    if (convertView == null) {
+      convertView = LayoutInflater.from(getContext()).inflate(
           R.layout.custom_gallery_search_spinner_item, parent, false
       );
     }
-    ImageView imageView = convertview.findViewById(R.id.image_gallery_search);
-    TextView titleView = convertview.findViewById(R.id.title);
-    TextView descriptionView = convertview.findViewById(R.id.description);
-    TextView urlView = convertview.findViewById(R.id.url);
+    ImageView imageView = convertView.findViewById(R.id.custom_spinner_image);
+    TextView title = convertView.findViewById(R.id.custom_spinner_title);
+    TextView description = convertView.findViewById(R.id.custom_spinner_description);
+    TextView url = convertView.findViewById(R.id.custom_spinner_url);
 
     Image currentItem = getItem(position);
 
-    if (currentItem.getUrl() != null) {
+    if (currentItem != null) {
       Picasso.get().load(currentItem.getUrl()).into(imageView);
-      urlView.setText(currentItem.getUrl());
-    }
-    if (currentItem.getTitle() != null) {
-      titleView.setText(currentItem.getTitle());
-    }
-    if (currentItem.getDescription() != null) {
-      descriptionView.setText(currentItem.getDescription());
+      title.setText(currentItem.getTitle());
+      description.setText(currentItem.getDescription());
+      url.setText(currentItem.getUrl());
     }
 
-    return convertview;
+    return convertView;
   }
 }

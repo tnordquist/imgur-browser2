@@ -41,15 +41,16 @@ public class ListViewModel extends AndroidViewModel {
         imgurService.getSearchResult(BuildConfig.CLIENT_ID,
             "cars")
             .subscribeOn(Schedulers.io())
-            .map(result -> {
+            .map((result) -> {
               List<Gallery> galleries = result.getData();
               galleries.removeIf((gallery) ->
-                  gallery.getImages() == null || gallery.getImages().isEmpty());
+                  gallery.getImages() == null ||
+                      gallery.getImages().isEmpty());
               return galleries;
             })
             .subscribe(
-                galleries::postValue,
-                throwable::postValue
+                value -> ListViewModel.this.galleries.postValue(value),
+                throwable -> this.throwable.postValue(throwable.getCause())
             )
     );
   }

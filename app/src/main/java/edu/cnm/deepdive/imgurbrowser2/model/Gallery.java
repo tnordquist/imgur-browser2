@@ -2,8 +2,8 @@ package edu.cnm.deepdive.imgurbrowser2.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
 import java.util.List;
-
 
 public class Gallery {
 
@@ -59,23 +59,24 @@ public class Gallery {
     this.datetime = datetime;
   }
 
-//  public List<Tag> getTags() {
-//    return tags;
-//  }
-//
-//  public String getLink() {
-//    return link;
-//  }
-//
-//  public void setLink(String link) {
-//    this.link = link;
-//  }
-//
-//  public void setTags(List<Tag> tags) {
-//    this.tags = tags;
-//  }
+  public int getImagesCount() {
+    return imagesCount;
+  }
+
+  public void setImagesCount(int imagesCount) {
+    this.imagesCount = imagesCount;
+  }
+
+  public Tag[] getTags() {
+    return tags;
+  }
+
+  public void setTags(Tag[] tags) {
+    this.tags = tags;
+  }
 
   public List<Image> getImages() {
+//    return (images != null) ? images : new List<Image>() {
     return images;
   }
 
@@ -83,10 +84,10 @@ public class Gallery {
     this.images = images;
   }
 
-  @Override
-  public String toString() {
-    return title + description + images.toString();
-  }
+//  @Override
+//  public String toString() {
+//    return title + description + images.toString();
+//  }
 
   public static class Search {
 

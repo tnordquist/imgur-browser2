@@ -10,27 +10,7 @@
     android:id="@+id/gallerySearchFragment"
     android:name="edu.cnm.deepdive.imgurbrowser2.controller.GallerySearchFragment"
     android:label="gallery_list"
-    tools:layout="@layout/gallery_list">
-    <action
-      android:id="@+id/action_go_to_detail"
-      app:destination="@id/detailFragment"
-      app:enterAnim="@anim/nav_default_enter_anim"
-      app:exitAnim="@anim/nav_default_exit_anim"/>
-  </fragment>
-  <fragment
-    android:id="@+id/detailFragment"
-    android:name="edu.cnm.deepdive.imgurbrowser2.controller.ImageDetailDialogFragment"
-    android:label="fragment_detail"
-    tools:layout="@layout/fragment_image_detail_dialog">
-    <action
-      android:id="@+id/action_go_to_list"
-      app:destination="@id/gallerySearchFragment"
-      app:enterAnim="@anim/nav_default_enter_anim"
-      app:exitAnim="@anim/nav_default_exit_anim"/>
-    <argument
-      android:name="imageId"
-      app:argType="integer"
-      android:defaultValue="0"/>
-  </fragment>
+    tools:layout="@layout/gallery_list"
+    />
 
 </navigation>
