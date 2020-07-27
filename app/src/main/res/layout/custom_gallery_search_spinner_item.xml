@@ -18,6 +18,7 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintEnd_toStartOf="@id/custom_spinner_title"
     android:layout_margin="@dimen/half_margin"
+    android:src="@drawable/car"
     android:contentDescription="@string/gallery_image"
     />
 

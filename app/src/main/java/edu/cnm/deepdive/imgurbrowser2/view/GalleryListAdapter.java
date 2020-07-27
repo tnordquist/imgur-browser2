@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.imgurbrowser2.R;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
+import edu.cnm.deepdive.imgurbrowser2.model.Image;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GalleryListAdapter extends
@@ -19,11 +21,14 @@ public class GalleryListAdapter extends
 
   private final Context context;
   private final List<Gallery> galleries;
+  private final OnItemSelectedHelper onItemSelectedHelper;
 
-  public GalleryListAdapter(Context context, List<Gallery> galleries) {
+  public GalleryListAdapter(Context context, List<Gallery> galleries,
+      OnItemSelectedHelper onItemSelectedHelper) {
     super();
     this.context = context;
     this.galleries = galleries;
+    this.onItemSelectedHelper = onItemSelectedHelper;
   }
 
   @NonNull
@@ -44,39 +49,52 @@ public class GalleryListAdapter extends
     return galleries.size();
   }
 
-  class GalleryViewHolder extends RecyclerView.ViewHolder {
+  class GalleryViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener{
 
     private final TextView title;
     private final TextView description;
     private final Spinner imageSpinner;
     private Gallery gallery;
+    private final List<Image> withIconList = new ArrayList<>();
+    private final String imageUrl = "" + R.drawable.gallery;
+    private final Image galleryIcon = new Image(imageUrl);
 
     public GalleryViewHolder(@NonNull View itemView) {
       super(itemView);
       title = itemView.findViewById(R.id.title);
       description = itemView.findViewById(R.id.description);
       imageSpinner = itemView.findViewById(R.id.gallery_search_spinner);
-      imageSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-//          String item = adapterView.getItemAtPosition(position).toString();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> adapterView) {
-
-        }
-      });
     }
 
     private void bind(int position) {
       gallery = galleries.get(position);
+      withIconList.clear();
+      withIconList.add(galleryIcon);
+      withIconList.addAll(gallery.getImages());
       title.setText(gallery.getTitle());
       description.setText(gallery.getDescription());
       GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(context,
-          gallery.getImages());
+          withIconList);
       imageSpinner.setAdapter(galleryImageAdapter);
+      imageSpinner.setOnItemSelectedListener(this);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+      if (position > 0) {
+        onItemSelectedHelper.onSelected(gallery, gallery.getImages().get(position - 1));
+        adapterView.setSelection(0);
+      }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+  }
+
+  public interface OnItemSelectedHelper {
+    void onSelected(Gallery gallery, Image image);
   }
 
 }
