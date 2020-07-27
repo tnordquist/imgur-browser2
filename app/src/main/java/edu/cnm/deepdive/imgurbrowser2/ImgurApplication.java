@@ -10,8 +10,8 @@ public class ImgurApplication extends Application {
     super.onCreate();
     Picasso.setSingletonInstance(
         new Picasso.Builder(this)
-        .loggingEnabled(true)
-        .build()
+            .loggingEnabled(true)
+            .build()
     );
   }
 }

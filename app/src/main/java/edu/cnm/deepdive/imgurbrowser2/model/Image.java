@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 public class Image implements Serializable {
 
-  /* preferences > inspections >
-  Java | Serialization issues | Serializable class without 'serialVersionUID'*/
   private static final long serialVersionUID = -8379334551653392484L;
 
   @Expose

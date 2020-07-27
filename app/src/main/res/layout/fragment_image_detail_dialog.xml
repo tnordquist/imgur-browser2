@@ -18,7 +18,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      android:text="@string/image_title"
       style="@style/TitleText"
       android:layout_marginTop="@dimen/basic_margin"
       android:layout_marginBottom="@dimen/half_margin"

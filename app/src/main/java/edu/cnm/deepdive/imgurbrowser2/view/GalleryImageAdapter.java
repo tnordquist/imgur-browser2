@@ -52,15 +52,14 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
       } else {
         Picasso.get().load(currentItem.getUrl()).into(imageView);
       }
+      if (currentItem.getTitle() != null) {
+        title.setText(currentItem.getTitle());
+      }
+      if (currentItem.getDescription() != null) {
+        description.setText(currentItem.getDescription());
+      }
     }
-    if (currentItem.getTitle() != null) {
-      title.setText(currentItem.getTitle());
-    }
-    if (currentItem.getDescription() != null) {
-      description.setText(currentItem.getDescription());
-    }
+
     return convertView;
   }
-
 }
-

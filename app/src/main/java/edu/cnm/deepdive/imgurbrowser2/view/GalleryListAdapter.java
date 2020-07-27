@@ -55,6 +55,7 @@ public class GalleryListAdapter extends
     private final TextView description;
     private final Spinner imageSpinner;
     private Gallery gallery;
+
     private final List<Image> withIconList = new ArrayList<>();
     private final String imageUrl = "" + R.drawable.gallery;
     private final Image galleryIcon = new Image(imageUrl);
@@ -64,6 +65,7 @@ public class GalleryListAdapter extends
       title = itemView.findViewById(R.id.title);
       description = itemView.findViewById(R.id.description);
       imageSpinner = itemView.findViewById(R.id.gallery_search_spinner);
+
     }
 
     private void bind(int position) {
@@ -81,8 +83,8 @@ public class GalleryListAdapter extends
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-      if (position > 0) {
-        onItemSelectedHelper.onSelected(gallery, gallery.getImages().get(position - 1));
+      if(position > 0) {
+        onItemSelectedHelper.onSelected(gallery,gallery.getImages().get(position-1));
         adapterView.setSelection(0);
       }
     }

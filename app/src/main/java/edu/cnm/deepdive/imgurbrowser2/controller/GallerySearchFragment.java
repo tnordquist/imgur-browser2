@@ -13,9 +13,10 @@ import edu.cnm.deepdive.imgurbrowser2.R;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
 import edu.cnm.deepdive.imgurbrowser2.view.GalleryListAdapter;
+import edu.cnm.deepdive.imgurbrowser2.view.GalleryListAdapter.OnItemSelectedHelper;
 import edu.cnm.deepdive.imgurbrowser2.viewmodel.ListViewModel;
 
-public class GallerySearchFragment extends Fragment implements GalleryListAdapter.OnItemSelectedHelper {
+public class GallerySearchFragment extends Fragment implements OnItemSelectedHelper {
 
   private RecyclerView galleryArray;
   private ListViewModel viewModel;
