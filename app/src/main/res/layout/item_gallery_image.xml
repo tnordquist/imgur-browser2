@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/modal_image_spinner"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="@dimen/half_margin">
+
+  <ImageView
+    android:id="@+id/image_gallery_search"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:scaleType="fitCenter"
+    android:adjustViewBounds="true"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/custom_title"
+    android:layout_margin="@dimen/half_margin"
+    android:src="@drawable/car"
+    android:contentDescription="@string/gallery_image"/>
+
+  <TextView
+    android:id="@+id/custom_title"
+    style="@style/TitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toEndOf="@id/image_gallery_search"
+    app:layout_constraintTop_toTopOf="parent"
+    android:textSize="15sp"
+    android:text="@string/image_title"
+    android:textColor="@android:color/black"
+    android:layout_margin="@dimen/half_margin"/>
+
+  <TextView
+    android:id="@+id/custom_description"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toEndOf="@id/image_gallery_search"
+    app:layout_constraintTop_toBottomOf="@id/custom_title"
+    android:textSize="15sp"
+    android:text="Description"
+    android:textColor="@android:color/black"
+    android:layout_margin="@dimen/half_margin"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

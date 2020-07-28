@@ -40,7 +40,7 @@ public class GalleryListAdapter extends
   }
 
   @Override
-  public void onBindViewHolder(@NonNull GalleryListAdapter.GalleryViewHolder holder, int position) {
+  public void onBindViewHolder(@NonNull GalleryViewHolder holder, int position) {
     holder.bind(position);
   }
 
@@ -49,7 +49,7 @@ public class GalleryListAdapter extends
     return galleries.size();
   }
 
-  class GalleryViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener{
+  class GalleryViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener {
 
     private final TextView title;
     private final TextView description;
@@ -62,10 +62,9 @@ public class GalleryListAdapter extends
 
     public GalleryViewHolder(@NonNull View itemView) {
       super(itemView);
-      title = itemView.findViewById(R.id.title);
-      description = itemView.findViewById(R.id.description);
+      title = itemView.findViewById(R.id.gallery_title);
+      description = itemView.findViewById(R.id.gallery_description);
       imageSpinner = itemView.findViewById(R.id.gallery_search_spinner);
-
     }
 
     private void bind(int position) {

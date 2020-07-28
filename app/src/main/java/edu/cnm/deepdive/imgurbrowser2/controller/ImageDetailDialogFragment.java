@@ -2,17 +2,15 @@ package edu.cnm.deepdive.imgurbrowser2.controller;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import com.squareup.picasso.Picasso;
 import edu.cnm.deepdive.imgurbrowser2.R;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
@@ -60,7 +58,7 @@ public class ImageDetailDialogFragment extends DialogFragment {
     imageDescription.setText((image.getDescription() != null) ? image.getDescription() : "Description N/A");
     imageId.setText((image.getImageId() != null) ? "Id: " + image.getImageId() : "Image Id N/A");
     imageUrl.setText((image.getUrl() != null) ? "Image Url: " + image.getUrl() : "Url N/A");
-    imageDateTime.setText((image.getImageDateTime() != null) ? "Submitted: " + image.getImageDateTime() : "DateTime N/A");
+    imageDateTime.setText((image.getImageDateTime() != null) ? "Submitted: " + convertTime(image.getImageDateTime()) : "DateTime N/A");
     imageType.setText((image.getType() != null) ? "Type of Image: " + image.getType() : "Type N/A");
     imageWidth.setText((image.getWidth() != null) ? "Image Width: " + image.getWidth() : "Image Width N/A");
     imageHeight.setText((image.getHeight() != null) ? "Image Height: " + image.getHeight() : "Image Height N/A");
@@ -81,5 +79,15 @@ public class ImageDetailDialogFragment extends DialogFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     return null;
+  }
+
+  /**
+   * Source: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+   * @param epoch
+   * @return String epoch form converted to date and time
+   */
+  private String convertTime(long epoch) {
+    return new java.text.SimpleDateFormat("MMMM-dd-yyyy hh:mm aa z")
+        .format(new java.util.Date(epoch * 1000));
   }
 }
