@@ -25,14 +25,12 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
   @Override
   public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
     return (convertView != null && convertView.findViewById(R.id.spinner_placeholder) != null)
-        ? convertView : LayoutInflater.from(getContext()).inflate(
-        R.layout.item_gallery_image_placeholder, parent, false);
+        ? convertView : LayoutInflater.from(getContext())
+        .inflate(R.layout.item_gallery_image_placeholder, parent, false);
   }
 
-  @Nullable
   @Override
-  public View getDropDownView(int position, @Nullable View convertView,
-      @NonNull ViewGroup parent) {
+  public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
     if (position == 0) {
       return (convertView != null && convertView.findViewById(R.id.spinner_unselectable) != null)
           ? convertView : LayoutInflater.from(getContext()).inflate(
@@ -42,15 +40,16 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
     }
   }
 
-  private View initView(int position, View convertview, ViewGroup parent) {
-    if (convertview == null || convertview.findViewById(R.id.modal_image_spinner) == null) {
-      convertview = LayoutInflater.from(getContext()).inflate(
+  private View initView(int position, View convertView, ViewGroup parent) {
+
+    if (convertView == null || convertView.findViewById(R.id.modal_image_spinner) == null) {
+      convertView = LayoutInflater.from(getContext()).inflate(
           R.layout.item_gallery_image, parent, false
       );
     }
-    ImageView imageView = convertview.findViewById(R.id.image_gallery_search);
-    TextView titleView = convertview.findViewById(R.id.custom_title);
-    TextView descriptionView = convertview.findViewById(R.id.custom_description);
+    ImageView imageView = convertView.findViewById(R.id.image_gallery_search);
+    TextView title = convertView.findViewById(R.id.custom_title);
+    TextView description = convertView.findViewById(R.id.custom_description);
 
     Image currentItem = getItem(position);
 
@@ -60,19 +59,19 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
       } else {
         Picasso.get().load(currentItem.getUrl()).into(imageView);
       }
-    }
-    if (currentItem.getTitle() != null) {
-      titleView.setText(currentItem.getTitle());
-    } else {
-      titleView.setText("Untitled");
+      if (currentItem.getTitle() != null) {
+        title.setText(currentItem.getTitle());
+      } else {
+        title.setText("Untitled");
+      }
 
-    }
-    if (currentItem.getDescription() != null) {
-      descriptionView.setText(currentItem.getDescription());
-    } else {
-      descriptionView.setText("No description");
+      if (currentItem.getDescription() != null) {
+        description.setText(currentItem.getDescription());
+      } else {
+        description.setText("No description");
+      }
     }
 
-    return convertview;
+    return convertView;
   }
 }

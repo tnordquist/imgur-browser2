@@ -5,7 +5,8 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="@dimen/half_margin">
+  android:padding="@dimen/half_margin"
+  >
 
   <Spinner
     android:id="@+id/gallery_search_spinner"
@@ -27,7 +28,6 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_weight="3"
     android:text="@string/image_title"
-    android:textColor="@android:color/black"
     style="@style/TitleText"
     />
 
@@ -36,10 +36,10 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="@id/gallery_title"
-    app:layout_constraintEnd_toEndOf="@id/gallery_title"
     app:layout_constraintTop_toBottomOf="@id/gallery_title"
-    android:text="@string/description"
+    app:layout_constraintEnd_toEndOf="@id/gallery_title"
+    android:text="@string/image_description"
     style="@style/Description"
-    android:layout_gravity="start"/>
-
+    android:layout_gravity="start"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

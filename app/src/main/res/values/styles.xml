@@ -9,28 +9,23 @@
   </style>
 
   <style name="TitleText" parent="AppTheme">
-    <item name="android:textSize">15sp</item>
+    <item name="android:textSize">20sp</item>
     <item name="android:textStyle">bold|italic</item>
-    <item name="android:textAlignment">viewStart</item>
+    <item name="android:textColor">@android:color/black</item>
   </style>
 
   <style name="Description" parent="AppTheme">
-    <item name="android:textStyle">normal</item>
     <item name="android:textSize">15sp</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:layout_margin">@dimen/half_margin</item>
+    <item name="android:padding">6dp</item>
     <item name="android:textColor">@android:color/black</item>
-    <item name="android:textAlignment">viewStart</item>
   </style>
 
   <style name="Image_Attribute" parent="AppTheme">
     <item name="android:layout_margin">@dimen/half_margin</item>
     <item name="android:textColor">@android:color/black</item>
     <item name="android:textSize">15sp</item>
-  </style>
-
-  <style name="FullScreenDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-    <item name="android:statusBarColor">#280680</item>
-    <item name="windowNoTitle">true</item>
-    <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
   </style>
 
 </resources>

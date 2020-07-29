@@ -12,36 +12,34 @@
     android:id="@+id/image_gallery_search"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:scaleType="fitCenter"
+    android:scaleType="centerInside"
     android:adjustViewBounds="true"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintEnd_toStartOf="@id/custom_title"
     android:layout_margin="@dimen/half_margin"
-    android:src="@drawable/car"
-    android:contentDescription="@string/gallery_image"/>
+    android:contentDescription="@string/gallery_image"
+    />
 
   <TextView
     android:id="@+id/custom_title"
     style="@style/TitleText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:text="@string/image_title"
     app:layout_constraintStart_toEndOf="@id/image_gallery_search"
     app:layout_constraintTop_toTopOf="parent"
-    android:textSize="15sp"
-    android:text="@string/image_title"
-    android:textColor="@android:color/black"
     android:layout_margin="@dimen/half_margin"/>
 
   <TextView
     android:id="@+id/custom_description"
+    style="@style/Description"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:text="@string/image_description"
     app:layout_constraintStart_toEndOf="@id/image_gallery_search"
     app:layout_constraintTop_toBottomOf="@id/custom_title"
-    android:textSize="15sp"
-    android:text="Description"
-    android:textColor="@android:color/black"
-    android:layout_margin="@dimen/half_margin"/>
+    android:layout_margin="@dimen/half_margin"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

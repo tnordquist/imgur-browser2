@@ -7,4 +7,5 @@
   android:scaleType="fitCenter"
   android:adjustViewBounds="true"
   android:src="@drawable/gallery"
-  android:contentDescription="@string/gallery_image"/>
+  android:contentDescription="@string/gallery_image"
+  />
