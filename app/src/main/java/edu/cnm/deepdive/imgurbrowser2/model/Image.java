@@ -1,8 +1,7 @@
 package edu.cnm.deepdive.imgurbrowser2.model;
 
 import androidx.annotation.NonNull;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.*;
 import java.io.Serializable;
 
 public class Image implements Serializable {
