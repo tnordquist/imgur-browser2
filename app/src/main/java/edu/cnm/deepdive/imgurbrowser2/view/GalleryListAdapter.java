@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.imgurbrowser2.R;
+import edu.cnm.deepdive.imgurbrowser2.databinding.ItemGallerySearchBinding;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class GalleryListAdapter extends
   private final Context context;
   private final List<Gallery> galleries;
   private final OnItemSelectedHelper onItemSelectedHelper;
+  private ItemGallerySearchBinding binding;
 
   public GalleryListAdapter(Context context, List<Gallery> galleries,
       OnItemSelectedHelper onItemSelectedHelper) {
@@ -35,8 +37,8 @@ public class GalleryListAdapter extends
   @Override
   public GalleryViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
       int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_gallery_search, parent, false);
-    return new GalleryViewHolder(view);
+    binding = ItemGallerySearchBinding.inflate(LayoutInflater.from(context), parent, false);
+    return new GalleryViewHolder(binding.getRoot());
   }
 
   @Override
@@ -49,23 +51,15 @@ public class GalleryListAdapter extends
     return galleries.size();
   }
 
-  class GalleryViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener{
+  class GalleryViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener {
 
-    private final TextView title;
-    private final TextView description;
-    private final Spinner imageSpinner;
     private Gallery gallery;
-
     private final List<Image> withIconList = new ArrayList<>();
     private final String imageUrl = "" + R.drawable.gallery;
     private final Image galleryIcon = new Image(imageUrl);
 
     public GalleryViewHolder(@NonNull View itemView) {
       super(itemView);
-      title = itemView.findViewById(R.id.gallery_title);
-      description = itemView.findViewById(R.id.gallery_description);
-      imageSpinner = itemView.findViewById(R.id.gallery_search_spinner);
-
     }
 
     private void bind(int position) {
@@ -73,18 +67,18 @@ public class GalleryListAdapter extends
       withIconList.clear();
       withIconList.add(galleryIcon);
       withIconList.addAll(gallery.getImages());
-      title.setText(gallery.getTitle());
-      description.setText(gallery.getDescription());
+      binding.galleryTitle.setText(gallery.getTitle());
+      binding.galleryDescription.setText(gallery.getDescription());
       GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(context,
           withIconList);
-      imageSpinner.setAdapter(galleryImageAdapter);
-      imageSpinner.setOnItemSelectedListener(this);
+      binding.gallerySearchSpinner.setAdapter(galleryImageAdapter);
+      binding.gallerySearchSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-      if(position > 0) {
-        onItemSelectedHelper.onSelected(gallery,gallery.getImages().get(position-1));
+      if (position > 0) {
+        onItemSelectedHelper.onSelected(gallery, gallery.getImages().get(position - 1));
         adapterView.setSelection(0);
       }
     }
@@ -96,6 +90,7 @@ public class GalleryListAdapter extends
   }
 
   public interface OnItemSelectedHelper {
+
     void onSelected(Gallery gallery, Image image);
   }
 

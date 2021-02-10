@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.squareup.picasso.Picasso;
 import edu.cnm.deepdive.imgurbrowser2.R;
+import edu.cnm.deepdive.imgurbrowser2.databinding.ItemGalleryImagePlaceholderBinding;
+import edu.cnm.deepdive.imgurbrowser2.databinding.ItemGalleryImageUnselectableBinding;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
 import java.util.List;
 
@@ -24,9 +26,11 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
   @NonNull
   @Override
   public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-    return (convertView != null && convertView.findViewById(R.id.spinner_placeholder) != null)
-        ? convertView : LayoutInflater.from(getContext())
-        .inflate(R.layout.item_gallery_image_placeholder, parent, false);
+    ItemGalleryImagePlaceholderBinding binding =
+        (convertView != null) ? ItemGalleryImagePlaceholderBinding.bind(convertView)
+            : ItemGalleryImagePlaceholderBinding
+                .inflate(LayoutInflater.from(getContext()), parent, false);
+    return binding.getRoot();
   }
 
   @Override
@@ -38,6 +42,7 @@ public class GalleryImageAdapter extends ArrayAdapter<Image> {
     } else {
       return initView(position, convertView, parent);
     }
+
   }
 
   private View initView(int position, View convertView, ViewGroup parent) {

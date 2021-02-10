@@ -2,19 +2,16 @@ package edu.cnm.deepdive.imgurbrowser2.controller;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import com.squareup.picasso.Picasso;
 import edu.cnm.deepdive.imgurbrowser2.R;
+import edu.cnm.deepdive.imgurbrowser2.databinding.FragmentImageDetailDialogBinding;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
 
 public class ImageDetailDialogFragment extends DialogFragment {
@@ -40,47 +37,38 @@ public class ImageDetailDialogFragment extends DialogFragment {
   @NonNull
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-    View view = LayoutInflater.from(getContext())
-        .inflate(R.layout.fragment_image_detail_dialog, null, false);
 
-    ImageView imageView = view.findViewById(R.id.image_detail);
-    TextView imageDescription = view.findViewById(R.id.image_description);
-    TextView imageId = view.findViewById(R.id.image_id);
-    TextView imageUrl = view.findViewById(R.id.image_url);
-    TextView imageDateTime = view.findViewById(R.id.image_datetime);
-    TextView imageType = view.findViewById(R.id.image_type);
-    TextView imageWidth = view.findViewById(R.id.image_width);
-    TextView imageHeight = view.findViewById(R.id.image_height);
-    TextView imageViews = view.findViewById(R.id.image_views);
-    TextView imageBandWidth = view.findViewById(R.id.image_bandwidth);
+    FragmentImageDetailDialogBinding binding
+        = FragmentImageDetailDialogBinding.inflate(LayoutInflater.from(getContext()));
 
     if (image.getUrl() != null) {
-      Picasso.get().load(image.getUrl()).into(imageView);
+      Picasso.get().load(image.getUrl()).into(binding.imageDetail);
     }
-    imageDescription
+    binding.imageDescription
         .setText((image.getDescription() != null) ? image.getDescription() : "Description N/A");
-    imageId.setText((image.getImageId() != null) ? "Id: " + image.getImageId() : "Image Id N/A");
-    imageUrl.setText((image.getUrl() != null) ? "Image Url: " + image.getUrl() : "Url N/A");
-    imageDateTime.setText(
+    binding.imageId
+        .setText((image.getImageId() != null) ? "Id: " + image.getImageId() : "Image Id N/A");
+    binding.imageUrl.setText((image.getUrl() != null) ? "Image Url: " + image.getUrl() : "Url N/A");
+    binding.imageDatetime.setText(
         (image.getImageDateTime() != null) ? "Submitted: " + convertTime(image.getImageDateTime())
             : "DateTime N/A");
-    imageType.setText((image.getType() != null) ? "Type of Image: " + image.getType() : "Type N/A");
-    imageWidth.setText(
+    binding.imageType
+        .setText((image.getType() != null) ? "Type of Image: " + image.getType() : "Type N/A");
+    binding.imageWidth.setText(
         (image.getWidth() != null) ? "Image Width: " + image.getWidth() : "Image Width N/A");
-    imageHeight.setText(
+    binding.imageHeight.setText(
         (image.getHeight() != null) ? "Image Height: " + image.getHeight() : "Image Height N/A");
-    imageViews.setText((image.getViews() != null) ? "Views: " + image.getViews() : "Views N/A");
-    imageBandWidth.setText(
+    binding.imageViews
+        .setText((image.getViews() != null) ? "Views: " + image.getViews() : "Views N/A");
+    binding.imageBandwidth.setText(
         (image.getBandwidth() != null) ? "Bandwidth: " + image.getBandwidth() : "Bandwidth N/A");
 
-    AlertDialog dialog = new AlertDialog.Builder(getContext())
+    return new AlertDialog.Builder(getContext())
         .setTitle((image.getTitle() != null) ? image.getTitle() : "Untitled")
-        .setView(view)
+        .setView(binding.getRoot())
         .setPositiveButton(R.string.close_image_dialog, (dlg, which) -> {
         })
         .create();
-
-    return dialog;
   }
 
   @Override

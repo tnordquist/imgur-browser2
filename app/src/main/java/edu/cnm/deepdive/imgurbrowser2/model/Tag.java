@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.imgurbrowser2.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.*;
 
 public class Tag {
 

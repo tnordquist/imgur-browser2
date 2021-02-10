@@ -32,7 +32,6 @@ public interface ImgurService {
 
     static {
       Gson gson = new GsonBuilder()
-          .excludeFieldsWithoutExposeAnnotation()
           .create();
       HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
       interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

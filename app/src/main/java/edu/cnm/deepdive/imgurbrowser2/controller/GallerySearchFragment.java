@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
-import edu.cnm.deepdive.imgurbrowser2.R;
+import edu.cnm.deepdive.imgurbrowser2.databinding.GalleryListBinding;
 import edu.cnm.deepdive.imgurbrowser2.model.Gallery;
 import edu.cnm.deepdive.imgurbrowser2.model.Image;
 import edu.cnm.deepdive.imgurbrowser2.view.GalleryListAdapter;
@@ -18,15 +18,14 @@ import edu.cnm.deepdive.imgurbrowser2.viewmodel.ListViewModel;
 
 public class GallerySearchFragment extends Fragment implements OnItemSelectedHelper {
 
-  private RecyclerView galleryArray;
   private ListViewModel viewModel;
+  private GalleryListBinding binding;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.gallery_list, container, false);
-    galleryArray = view.findViewById(R.id.recycler_view);
-    return view;
+    binding = GalleryListBinding.inflate(inflater);
+    return binding.getRoot();
   }
 
   @Override
@@ -36,7 +35,7 @@ public class GallerySearchFragment extends Fragment implements OnItemSelectedHel
         .get(ListViewModel.class);
     viewModel.getGalleries().observe(getViewLifecycleOwner(), galleries -> {
       if (galleries != null) {
-        galleryArray.setAdapter(new GalleryListAdapter(getContext(), galleries,
+        binding.recyclerView.setAdapter(new GalleryListAdapter(getContext(), galleries,
             this));
       }
     });
